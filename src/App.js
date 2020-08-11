@@ -27,7 +27,7 @@ export default function App() {
     }
   }
 
-  function clear(textfield){
+  function handleClear(textfield){
     if(textfield === 'ap1'){
       setAp1('');
     }
@@ -41,16 +41,11 @@ export default function App() {
   }
 
   function handleDone(ap1, ap2, ap3){
-    console.log(ap1);
-    console.log(ap2);
-    console.log(ap3);
 
     const objectResult = average(ap1, ap2, ap3);
 
-    console.log(objectResult);
-
     if(ap1 === '' && ap2 === '' && ap3 === ''){
-      alert('Notes not found.');
+      alert('Nenhuma nota encontrada.');
     }else{
       if(ap1 === ''){
         setAp1(objectResult.ap1);
@@ -119,7 +114,7 @@ export default function App() {
           <TouchableOpacity style={ styles.button } onPress={() => insertNumber(apSelected, '0')}>
             <Text style={ styles.textButton }>0</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={ styles.button } onPress={() => clear(apSelected)}>
+          <TouchableOpacity style={ styles.button } onPress={() => handleClear(apSelected)}>
             <Text style={ styles.textButton }>C</Text>
           </TouchableOpacity>
         </View>
@@ -160,7 +155,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   ButtonAPSelected:{
-    backgroundColor: '#242424',
+    backgroundColor: '#252525',
     width: 100,
     height: 100, 
     borderWidth: 2,
@@ -179,17 +174,16 @@ const styles = StyleSheet.create({
 
   },
   keyboardContainer:{
-    paddingTop: 20,
-    borderWidth: 2,
-    borderTopColor: '#787878',
     width: '100%',
-    height: 279,
     flexDirection: 'row',
     flexWrap:'wrap',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
   button:{
+    backgroundColor: '#252525',
+    marginBottom: 15,
+    borderRadius: 32,
     width: 99,
     height: 64,
     alignItems: 'center',
